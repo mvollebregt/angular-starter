@@ -3,7 +3,7 @@
 Starter project for Angular, adjusted to my own preferences. Those preferences are:
 
 - Jest instead of Karma and Jasmine
-- Cypress instead of Protractor (TODO)
+- Cypress instead of Protractor
 - Leaner schematics (TODO)
 
 You do not actually have to use this project as a starter project. To create this project, I followed the (easy)
@@ -58,6 +58,8 @@ here](https://github.com/briebug/jest-schematic/issues/22) to fix that.
 
 ## Cypress
 
+### Adding the cypress schematic
+
 In my experience, testing with protractor can be rather bumpy. Cypress gives a smoother experience. It now also has
 [Firefox and Edge support](https://www.cypress.io/blog/2020/02/06/introducing-firefox-and-edge-support-in-cypress-4-0/).
 
@@ -67,3 +69,33 @@ For replacing Protractor with Cypress, simply use the [cypress schematic](https:
 
 Opening the interactive Cypress UI is as easy as typing `ng e2e`. Or simultaneously run `ng test` and `npx cypress run`
 to run Cypress in headless mode.
+
+### Removing jasmine
+
+You can remove all jasmine related packages from package.json (every line that contains the word 'jasmine').
+
+## Leaner schematics (TODO)
+
+If you generate your components with `ng generate component` and do not clean up, you will get lots of empty CSS files,
+empty constructors and empty ngOnInit methods. That irritates me immensely. What I would like to do:
+
+- remove the empty constructor from the default schematic
+- remove the ngOnInit
+- remove the CSS file
+
+This is something I will look into at a later moment. For now I'll just remove them manually every time. To make that
+a little bit easier, I changed the following in angular.json:
+
+```json
+{
+  "schematics": {
+    "@schematics/angular:component": {
+      "inlineStyle": true
+    }
+  }
+}
+```
+
+Now I just have to remove a single line in the TypeScript file, instead of a line in the TypeScript file and a separate
+file. Note that if I want to add custom CSS to a component, I do NOT do that inline, but replace the inline style with
+a separate SCSS file.
