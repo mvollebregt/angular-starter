@@ -9,6 +9,9 @@ Starter project for Angular, adjusted to my own preferences. Those preferences a
 You do not actually have to use this project as a starter project. To create this project, I followed the (easy)
 steps below. You can easily follow the steps on your own project instead of starting with this project.
 
+By the way, I love the people from [briebug](https://github.com/briebug) for creating all those convenient schematics
+I use below.
+
 ## Jest
 
 ### Adding the Jest schematic
@@ -28,19 +31,22 @@ ng add @briebug/jest-schematic
 ### Making ng test work
 
 The above schematic requires you to run `npm run test` instead of `ng test`. To make `ng test` work, install
-@angular/builders/jest and change your angular.json:
+@angular-builders/jest and change your angular.json:
 
 ```shell script
 npm i -D jest @types/jest @angular-builders/jest
 ```
 
-In angular.json, look for `@angular-devkit/build-angular:karma` and change it to `@angular-builders/jest:run`.
+In angular.json:
+
+- look for `@angular-devkit/build-angular:karma` and 
+- change it to `@angular-builders/jest:run`.
 
 ### [Use jest types instead of jasmine types](https://github.com/briebug/jest-schematic/issues/24)
 
 Fix the types:
 
-- Change types: ["jasmine", "node"] to types: ["jest", "node"] in tsconfig.spec.json
+- Change types: `["jasmine", "node"]` to types: `["jest", "node"]` in tsconfig.spec.json
 
 Do not remove @types/jasmine and @types/jasminewd2 from your package.json if you still want to be able to run 
 protractor tests. 
@@ -49,3 +55,15 @@ protractor tests.
 
 The @briebug/jest-schematic does not work well with an Angular CLI multi project setup. Use the [solutions described
 here](https://github.com/briebug/jest-schematic/issues/22) to fix that.
+
+## Cypress
+
+In my experience, testing with protractor can be rather bumpy. Cypress gives a smoother experience. It now also has
+[Firefox and Edge support](https://www.cypress.io/blog/2020/02/06/introducing-firefox-and-edge-support-in-cypress-4-0/).
+
+For replacing Protractor with Cypress, simply use the [cypress schematic](https://github.com/briebug/cypress-schematic).
+
+`ng add @briebug/cypress-schematic`
+
+Opening the interactive Cypress UI is as easy as typing `ng e2e`. Or simultaneously run `ng test` and `npx cypress run`
+to run Cypress in headless mode.
