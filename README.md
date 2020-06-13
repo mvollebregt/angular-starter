@@ -49,7 +49,22 @@ Fix the types:
 - Change types: `["jasmine", "node"]` to types: `["jest", "node"]` in tsconfig.spec.json
 
 Do not remove @types/jasmine and @types/jasminewd2 from your package.json if you still want to be able to run 
-protractor tests. 
+protractor tests.
+
+### Fix SyntaxError: Cannot use import statement outside a module
+ 
+If you encounter this error, see the solution on 
+[stackoverflow](https://stackoverflow.com/questions/55794280/jest-fails-with-unexpected-token-on-import-statement).
+
+For example, add this to your package.json:
+
+```json
+{
+  "transformIgnorePatterns": [
+    "node_modules/(?!(@ionic-native)/)"
+  ]
+}
+```
 
 ### Adding support for multi project setup
 
