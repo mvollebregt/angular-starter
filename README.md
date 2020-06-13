@@ -35,3 +35,17 @@ npm i -D jest @types/jest @angular-builders/jest
 ```
 
 In angular.json, look for `@angular-devkit/build-angular:karma` and change it to `@angular-builders/jest:run`.
+
+### [Use jest types instead of jasmine types](https://github.com/briebug/jest-schematic/issues/24)
+
+Fix the types:
+
+- Change types: ["jasmine", "node"] to types: ["jest", "node"] in tsconfig.spec.json
+
+Do not remove @types/jasmine and @types/jasminewd2 from your package.json if you still want to be able to run 
+protractor tests. 
+
+### Adding support for multi project setup
+
+The @briebug/jest-schematic does not work well with an Angular CLI multi project setup. Use the [solutions described
+here](https://github.com/briebug/jest-schematic/issues/22) to fix that.
