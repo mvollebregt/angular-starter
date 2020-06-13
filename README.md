@@ -85,6 +85,11 @@ For replacing Protractor with Cypress, simply use the [cypress schematic](https:
 Opening the interactive Cypress UI is as easy as typing `ng e2e`. Or simultaneously run `ng test` and `npx cypress run`
 to run Cypress in headless mode.
 
+### Fixing lint settings
+
+After adding the above schematic, ng lint will complain about e2e/tsconfig.json not existing. Open angular.json and
+replace "e2e/tsconfig.json" by "cypress/tsconfig.json".
+
 ### Removing jasmine
 
 You can remove all jasmine related packages from package.json (every line that contains the word 'jasmine').
