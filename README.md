@@ -5,6 +5,7 @@ Starter project for Angular, adjusted to my own preferences. Those preferences a
 - Jest instead of Karma and Jasmine
 - Cypress instead of Protractor
 - Leaner schematics (TODO)
+- Lint rules and compiler options
 
 You do not actually have to use this project as a starter project. To create this project, I followed the (easy)
 steps below. You can easily follow the steps on your own project instead of starting with this project.
@@ -119,3 +120,15 @@ a little bit easier, I changed the following in angular.json:
 Now I just have to remove a single line in the TypeScript file, instead of a line in the TypeScript file and a separate
 file. Note that if I want to add custom CSS to a component, I do NOT do that inline, but replace the inline style with
 a separate SCSS file.
+
+## Lint rules and compiler options
+
+I prefer strict null checking. In tsconfig.json add:
+
+```json
+{
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}
+```
