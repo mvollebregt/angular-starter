@@ -67,6 +67,18 @@ For example, add this to your package.json:
 }
 ```
 
+### Fixing "TypeError: Cannot read property 'ɵprov' of undefined'
+
+Add the following to your package.json to get clearer error messages from Angular:
+
+```json
+{
+  "scripts": {
+    "postinstall": "ngcc" 
+  }
+}
+```
+
 ### Adding support for multi project setup
 
 The @briebug/jest-schematic does not work well with an Angular CLI multi project setup. Use the [solutions described
